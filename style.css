@@ -1,0 +1,34 @@
+body { font-family: "DejaVu Sans Condensed", sans-serif; }
+h1, h2, h3, h4, h5, h6 { font-family: "DejaVu Sans Extra Light", sans-serif; }
+
+.hidden { display: none; }
+
+.leaflet-container { background-color: #fff; }
+.map.static { cursor: default; }
+.map.static > .leaflet-control-container { display: none; }
+.map > canvas.gradient-border { position: absolute; }
+.map-container { float: left; }
+
+.title > h1 {
+  text-align: center;
+  font-size: 34px;
+}
+
+section { 
+  width: 1200px; 
+  margin: auto; 
+  margin-bottom: 50px;
+}
+section::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.overview .map { width: 650px; height: 700px; }
+
+.milwaukee .map { width: 600px; height: 450px; }
+
+.madison .map { width: 450px; height: 400px; }
+
+.fox-valley .map { width: 650px; height: 750px; }
