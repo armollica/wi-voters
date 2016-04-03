@@ -9,9 +9,8 @@ h1, h2, h3, h4, h5, h6 { font-family: "DejaVu Sans Extra Light", sans-serif; }
 .map > canvas.gradient-border { position: absolute; }
 .map-container { float: left; }
 
-.title > h1 {
-  text-align: center;
-  font-size: 34px;
+.title img {
+  margin: 0 107px;
 }
 
 section { 
@@ -19,16 +18,46 @@ section {
   margin: auto; 
   margin-bottom: 50px;
 }
+
 section::after {
   content: "";
   display: block;
   clear: both;
 }
 
-.overview .map { width: 650px; height: 700px; }
+.text-container {
+  position: relative;
+}
 
-.milwaukee .map { width: 600px; height: 450px; }
+.all-state .map { 
+  width: 1000px; 
+  height: 700px;
+  margin: 0 100px;
+}
+
+.all-state .picto-array {
+  margin: 0 130px;
+}
+
+.milwaukee .map { width: 600px; height: 700px; }
+
+.milwaukee .milwaukee-urban {
+  position: absolute;
+  top: 0;
+  left: 495px;
+}
+
+.milwaukee .milwaukee-suburban {
+  position: absolute;
+  top: 177px;
+  left: 500px;
+}
 
 .madison .map { width: 450px; height: 400px; }
 
-.fox-valley .map { width: 650px; height: 750px; }
+.fox-valley .map { width: 650px; height: 800px; }
+
+.democrat { fill: #3E67B1; }
+.republican { fill: #D54444; }
+.independent { fill: #42A942; }
+.non-voter { fill: lightgrey; }

@@ -7,25 +7,27 @@
     <link rel="stylesheet" href="fonts/style.css">
     <link rel="stylesheet" href="style.css">
     
-    <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <!-- External libraries -->
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="src/d3-plugins/swoopy-drag.js"></script>
+    <script src="src/d3-plugins/text-wrap.js"></script>
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
     <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
-
-    <script src="js/leaflet-utils.js"></script>
+    
   </head>
   <body>
      
     <section class="title">
-      <h1>Voters of Wisconsin</h1>
+      <img src="img/header.png" alt="Page header">
     </section>
-    <section class="overview">
+    
+    <section class="all-state">
       <div class="map-container">
         <div class="map"></div>
       </div>
       <div class="text-container">
-        
+        <img class="picto-array" src="img/all-state.png" alt="Picto-array of entire state">
       </div>
-      <script src="js/sections/overview.js"></script>
     </section>
     
     <section class="milwaukee">
@@ -34,9 +36,9 @@
         <div class="map"></div>
       </div>
       <div class="text-container">
-        
+        <img class="picto-array milwaukee-urban" src="img/milwaukee.png" alt="Picto-array of Milwaukee">
+        <img class="picto-array milwaukee-suburban" src="img/milwaukee-suburbs.png" alt="Picto-array of Milwaukee's suburbs'">
       </div>
-      <script src="js/sections/milwaukee.js"></script>
     </section>
     
     <section class="madison">
@@ -45,9 +47,8 @@
         <div class="map"></div>
       </div>
       <div class="text-container">
-        
+        <img class="picto-array" src="img/madison.png" alt="Picto-array of Dane county">
       </div>
-      <script src="js/sections/madison.js"></script>
     </section>
     
     <section class="fox-valley">
@@ -56,10 +57,9 @@
         <div class="map"></div>
       </div>
       <div class="text-container">
-        
+        <img class="picto-array" src="img/fox-valley.png" alt="Picto-array of the Fox Valley">
       </div> 
-      <script src="js/sections/fox-valley.js"></script>
     </section>
-     
+    <script src="bundle.js"></script>
   </body>
 </html>
