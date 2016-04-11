@@ -1,19 +1,19 @@
 import { addGradientBorder } from "../leaflet-helpers.js";
 
 export default function() {
- var section = d3.select(".all-state");
+  var section = d3.select(".all-state");
  
   //____________________________________________________________________________
   // Draw map
   var map = new L.Map(section.select(".map").node(), { 
       center: [44.5856, -89.6347], 
-      zoom: 7,
+      zoom: 8,
       maxZoom: 10,
-      minZoom: 7,
+      minZoom: 8,
       reuseTiles: true,
       maxBounds: [[47.2941, -86.4404], [41.8859, -93.2959]],
       attributionControl: false,
-     fullscreenControl: true
+      fullscreenControl: true
     });
 
   var layer = new L.TileLayer("tiles/{z}/{x}/{y}.png");
@@ -37,4 +37,8 @@ export default function() {
       map.scrollWheelZoom.disable();  
     }
   });
+  
+  // Remove mouse events from text container
+  section.select(".text-container")
+    .style("pointer-events", "none");
 };
