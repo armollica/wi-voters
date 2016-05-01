@@ -1,14 +1,16 @@
 body { font-family: "DejaVu Sans Condensed", sans-serif; }
-h1, h2, h3, h4, h5, h6 { font-family: "DejaVu Sans Extra Light", sans-serif; }
+h1, h2, h3, h4, h5, h6{ font-family: "DejaVu Sans Extra Light", sans-serif; }
 
 .hidden { display: none; }
 
 .leaflet-container { background-color: #fff; }
 .map.static { cursor: default; }
 .map.static > .leaflet-control-container { display: none; }
-.map > canvas.gradient-border { position: absolute; }
 .map-container { float: left; }
-
+.map > canvas.gradient-border { 
+  position: absolute;
+  pointer-events: none; 
+}
 .title img {
   margin: 0 107px;
 }
@@ -57,7 +59,36 @@ section::after {
 
 .fox-valley .map { width: 650px; height: 800px; }
 
-.democrat { fill: #3E67B1; }
-.republican { fill: #D54444; }
-.independent { fill: #42A942; }
-.non-voter { fill: lightgrey; }
+.democrat { fill: #3E67B1; stroke: #1e3257; }
+.republican { fill: #D54444; stroke: #701919; }
+.independent { fill: #42A942; stroke: #205320; }
+.non-voter { fill: lightgrey; stroke: #676767; }
+
+.icon { shape-rendering: geometricPrecision; }
+
+.icon-matrix { 
+  pointer-events: none;
+  fill: #000;
+  text-shadow: -3px 0 3px #fff, 
+                0 3px 3px #fff, 
+                3px 0 3px #fff, 
+                0 -3px 3px #fff; 
+}
+
+.county {
+  fill: grey;
+  fill-opacity: 0;
+}
+
+.county:hover {
+  fill-opacity: 0.1;
+}
+
+.icon-matrix .heading {
+  font-family: "DejaVu Sans Extra Light", sans-serif;
+  font-size: 20px;
+}
+
+.icon-matrix .info {
+  font-size: 10px;
+}
