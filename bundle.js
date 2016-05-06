@@ -127,7 +127,7 @@
   };
 
   function renderAllState() {
-    var section = d3.select(".all-state");
+    var section = d3.select(".map-section");
    
     //____________________________________________________________________________
     // Draw map
@@ -247,7 +247,6 @@
         
       icons.exit().remove();
       
-      
       iconMatrix.select(".heading")
         .attr("dx", -5)
         .attr("dy", -10)
@@ -299,11 +298,121 @@
       var point = map.latLngToLayerPoint(new L.LatLng(y, x));
       this.stream.point(point.x, point.y);
     }
+    
+    //____________________________________________________________________________
+    // Legend
+    
+    var legendData = {
+      header: [
+        {
+          text: ["Sparsely", "Populated"],
+          x: 10
+        },
+        {
+          text: ["Densely", "Populated"],
+          x: 70
+        }
+      ],
+      population: [
+          { 
+            text: "Heavily Democrat",
+            color: "#446093",
+            densities: [0.1, 0.3, 0.6, 1]
+          },
+          { 
+            text: "Close Contest",
+            color: "#874e8e",
+            densities: [0.1, 0.3, 0.6, 1] 
+          },
+          { 
+            text: "Heavily Republican",
+            color: "#bc3939",
+            densities: [0.1, 0.3, 0.6, 1]
+          }
+      ],
+      icon: [
+        { text: "Democrats (1000 per circle)", key: "democrat" },
+        { text: "Republicans", key: "republican" },
+        { text: "Independents", key: "independent" },
+        { text: "Non-voters (18+ years old)", key: "non-voter" }
+      ]
+    };
+    
+    var legend = d3.select(".map-container").append("svg")
+        .attr("class", "legend")
+        .attr("width", 1200)
+        .attr("height", 1600)
+      .append("g")
+        .attr("transform", "translate(20, 1350)");
+    
+    // Population legend
+    var populationLegend = legend.append("g")
+      .attr("class", "population");
+    
+    var barHeaders = populationLegend.append("g")
+          .attr("class", "bar-header")
+          .attr("transform", "translate(0,-20)")
+          .selectAll(".header").data(legendData.header)
+        .enter().append("g")
+          .attr("transform", function(d) { return "translate(" + d.x + ",0)"; });
+    
+    barHeaders.selectAll("text").data(function(d) { return [d]; })
+      .enter().append("text")
+        .selectAll("tspan").data(function(d) { return d.text; })
+      .enter().append("tspan")
+        .attr("x", 0)
+        .attr("dy", function(d, i) { return 12*i; })
+        .style("text-anchor", "middle")
+        .text(function(d) { return d; });
+    
+    barHeaders.selectAll("line").data(function(d) { return [d]; })
+      .enter().append("line")
+        .attr("x1", 0)
+        .attr("x2", 0)
+        .attr("y1", 14)
+        .attr("y2", 20);
+    
+    var bars = populationLegend.selectAll(".bar").data(legendData.population)
+      .enter().append("g")
+        .attr("class", "bar")
+        .attr("transform", function(d, i) { return "translate(0," + (i*18) + ")"; })
+        .style("fill", function(d) { return d.color; });
+    
+    bars.selectAll("rect").data(function(d) { return d.densities; })
+      .enter().append("rect")
+        .attr("x", function(d, i) { return i * 20; })
+        .attr("width", 20)
+        .attr("height", 15)
+        .style("opacity", function(d) { return d; });
+    
+    bars.selectAll("text").data(function(d) { return [d.text]; })
+      .enter().append("text")
+        .attr("dx", 85)
+        .attr("dy", 12)
+        .style("fill", null)
+        .text(function(d) { return d; });
+    
+    // Icon legend
+    var iconLegend = legend.append("g")
+      .attr("class", "icon")
+      .attr("transform", "translate(0, 75)");
+    
+    var icons = iconLegend.selectAll(".icon").data(legendData.icon)
+      .enter().append("g")
+        .attr("class", "icon")
+        .attr("transform", function(d, i) { return "translate(0," + (16*i) + ")"; });
+    
+    icons.selectAll("circle").data(function(d) { return [d]; })
+      .enter().append("circle")
+        .attr("class", function(d) { return d.key; })
+        .attr("r", 3);
+    
+    icons.selectAll("text").data(function(d) { return [d]; })
+      .enter().append("text")
+        .attr("dx", 9)
+        .attr("dy", 4)
+        .text(function(d) { return d.text; });
   };
-
-  //import renderMilwaukee from "./sections/milwaukee.js";
-  //import renderMadison from "./sections/madison.js";
-  //import renderFoxValley from "./sections/fox-valley.js";
 
   renderAllState();
 

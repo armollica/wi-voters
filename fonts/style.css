@@ -9,6 +9,11 @@
 }
 
 @font-face {
+  font-family: "DejaVu Sans Bold Oblique";
+  src: url("DejaVuSans-BoldOblique.ttf");
+}
+
+@font-face {
   font-family: "DejaVu Sans Extra Light";
   src: url("DejaVuSans-ExtraLight.ttf");
 }

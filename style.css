@@ -1,16 +1,37 @@
 body { font-family: "DejaVu Sans Condensed", sans-serif; }
-h1, h2, h3, h4, h5, h6{ font-family: "DejaVu Sans Extra Light", sans-serif; }
+
+.title {
+  margin-top: 40px;
+  margin-bottom: 130px;
+}
+
+.title h1 {
+  font-family: "DejaVu Sans Extra Light", sans-serif;
+  font-size: 80px;
+  letter-spacing: 0.25em;
+}
 
 .hidden { display: none; }
 
 .leaflet-container { background-color: #fff; }
+
 .map.static { cursor: default; }
+
 .map.static > .leaflet-control-container { display: none; }
+
 .map-container { float: left; }
-.map > canvas.gradient-border { 
+
+.map > canvas.gradient-border {
   position: absolute;
   pointer-events: none; 
 }
+
+svg.legend {
+  position: absolute;
+  top: 0px;
+  pointer-events: none; 
+}
+
 .title img {
   margin: 0 107px;
 }
@@ -21,43 +42,18 @@ section {
   margin-bottom: 50px;
 }
 
-section::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-.text-container {
-  position: relative;
-}
-
-.all-state .map {
+.map {
   width: 1200px; 
   height: 1300px;
   margin: 0;
 }
 
-.all-state .picto-array {
-  margin: 0 130px;
+.summary {
+  width: 600px;
+  margin: auto;
+  padding-top: 60px;
+  clear: both;
 }
-
-.milwaukee .map { width: 600px; height: 700px; }
-
-.milwaukee .milwaukee-urban {
-  position: absolute;
-  top: 0;
-  left: 495px;
-}
-
-.milwaukee .milwaukee-suburban {
-  position: absolute;
-  top: 177px;
-  left: 500px;
-}
-
-.madison .map { width: 450px; height: 400px; }
-
-.fox-valley .map { width: 650px; height: 800px; }
 
 .democrat { fill: #3E67B1; stroke: #1e3257; }
 .republican { fill: #D54444; stroke: #701919; }
@@ -91,4 +87,17 @@ section::after {
 
 .icon-matrix .info {
   font-size: 10px;
+}
+
+.legend text {
+  font-size: 12px;
+  fill: slategrey;
+  text-shadow: -3px 0 3px #fff, 
+                0 3px 3px #fff, 
+                3px 0 3px #fff, 
+                0 -3px 3px #fff; 
+}
+
+.legend line {
+  stroke: slategrey;
 }
